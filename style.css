@@ -1,0 +1,24 @@
+@keyframes surfear {
+    from{
+        background-position: 20000%;
+    }
+    to{
+        background-position: 0%;
+    }
+}
+#paisatge{
+ position: absolute;
+ background-image: url('./img/fondo.jpeg');
+ height: 100%;
+ width: 100%;
+ animation: surfear 600s infinite linear;
+}
+
+.sergi{
+    background-image: url('./img/spiderman.png');
+    height: 500px;
+    width: 500px;
+    position: absolute; 
+    bottom: 0;
+
+}
