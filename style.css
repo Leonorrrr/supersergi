@@ -22,3 +22,13 @@
     bottom: 0;
 
 }
+
+.estrellamuerte{
+    background-image: url('./img/estrellamuerte.png');
+    height: 200px;
+    width: 200px;
+    position: absolute; 
+    right: 0;
+    bottom: 0;
+
+}

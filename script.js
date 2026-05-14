@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function control(tecla){
 
         if(tecla.code == 'Space'){
-
            jump();
         }
         if(tecla.key == 'c'){
@@ -18,19 +17,46 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    let position = 0;
     function jump(){
-        sergi.style.bottom = '200px'
+        let count = 0;
+       let puja = setInterval(function(){
+        if(count == 15){
+            clearInterval(puja)
+            let baixa = setInterval(function(){
+                 if(count == 0){
+            clearInterval(baixa)}
+                position -= 5;
+                count--;
+                position = position*gravity;
+                sergi.style.bottom = position+ 'px';
+            },20)
+        }
+        position += 30
+        position = position*gravity
+        count++
+        sergi.style.bottom = position+ 'px'
+       },20) 
     }
     
     function transformar(){
         sergi.style.backgroundImage = "url('./img/batman.png')";
      
     }
+
     function volver(){
         sergi.style.backgroundImage = "url('./img/spiderman.png')";
      
     }
 
+    function obstaculo(){
+      const obj = document.createElement('div')
+      obj.classList.add('estrellamuerte')
+      grid.appendChild(obj)
+
+    }
+
+    obstaculo();
 
     document.addEventListener('keydown', control)
 })
