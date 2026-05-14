@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 sergi.style.bottom = position+ 'px';
             },20)
         }
-        position += 30
+        position += 50
         position = position*gravity
         count++
         sergi.style.bottom = position+ 'px'
