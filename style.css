@@ -1,34 +1,44 @@
 @keyframes surfear {
-    from{
+    from {
         background-position: 20000%;
     }
-    to{
+
+    to {
         background-position: 0%;
     }
 }
-#paisatge{
- position: absolute;
- background-image: url('./img/fondo.jpeg');
- height: 100%;
- width: 100%;
- animation: surfear 600s infinite linear;
+
+#paisatge {
+    position: absolute;
+    background-image: url('./img/fondo.jpeg');
+    height: 100%;
+    width: 100%;
+    animation: surfear 600s infinite linear;
 }
 
-.sergi{
+.sergi {
     background-image: url('./img/spiderman.png');
     height: 200px;
     width: 200px;
-    position: absolute; 
+    position: absolute;
     bottom: 0;
 
 }
 
-.estrellamuerte{
+.estrellamuerte {
     background-image: url('./img/estrellamuerte.png');
     height: 200px;
     width: 200px;
-    position: absolute; 
-    right: 0;
+    position: absolute;
     bottom: 0;
+
+}
+
+.comida {
+    background-image: url('./img/bollo.png');
+    height: 49px;
+    width: 100px;
+    position: absolute;
+    bottom: 300px;
 
 }
