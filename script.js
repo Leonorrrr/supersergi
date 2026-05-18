@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let gravity = 0.9
     let estaBotant = false;
+    let isGameOver = false;
+    let score = 0;
 
     function control(tecla) {
 
@@ -58,30 +60,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function obstaculo() {
 
-        let posicio = 1600;
-        const obj = document.createElement('div')
-        obj.classList.add('estrellamuerte')
+        if (!isGameOver) {
 
-        obj.style.left = posicio + 'px'
-        grid.appendChild(obj)
+            let posicio = 1600;
+            let randomTime = Math.random() * 3000
 
-        let mueve = setInterval(function () {
-            if (posicio < 0) {
-                clearInterval(mueve);
-                while(grid.firstChild){
-                    grid.removeChild(grid.lastChild)
+            const obj = document.createElement('div')
+            obj.classList.add('estrellamuerte')
 
+            obj.style.left = posicio + 'px'
+            grid.appendChild(obj)
+
+            let mueve = setInterval(function () {
+                if (posicio > 0 && posicio < 60 && position < 60) {
+                    clearInterval(mueve);
+                    isGameOver = true;
+
+                    while (grid.firstChild) {
+                        grid.removeChild(grid.lastChild)
+
+                    }
                 }
-            }
-            posicio -= 5;
-            obj.style.left = posicio+ 'px';
-        }, 20)
+                posicio -= 15;
+                obj.style.left = posicio + 'px';
+            }, 20)
+            setTimeout(obstaculo, randomTime);
+        }
+
+
 
     }
 
-     function comida() {
+    function generaObs() {
 
-        let posicio = 1600;
+        let posicio = 1700;
+        let randomTime = Math.random() * 3000;
+
         const obj = document.createElement('div')
         obj.classList.add('comida')
 
@@ -89,21 +103,24 @@ document.addEventListener('DOMContentLoaded', () => {
         grid.appendChild(obj)
 
         let mueve = setInterval(function () {
-            if (posicio < 0) {
+            if (posicio > 0 && posicio < 70 && position < 0) {
                 clearInterval(mueve);
-                while(grid.firstChild){
+                //sumar score
+                while (grid.firstChild) {
                     grid.removeChild(grid.lastChild)
-                    
                 }
             }
-            posicio -= 5;
-            obj.style.left = posicio+ 'px';
+
+            posicio -= 15;
+            obj.style.left = posicio + 'px'
         }, 20)
+        setTimeout(generaObs, randomTime);
+
 
     }
 
+    generaObs()
     obstaculo();
-    comida();
 
     document.addEventListener('keydown', control)
 })
