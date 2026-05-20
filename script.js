@@ -1,12 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
     const sergi = document.querySelector('.sergi')
     const grid = document.querySelector('.grid')
+    const alert = document.getElementById('alert')
 
     let gravity = 0.9
     let estaBotant = false;
     let isGameOver = false;
-    let score = 0;
 
+    let score = 0;
+    
     function control(tecla) {
 
         if (tecla.code == 'Space') {
@@ -103,12 +105,12 @@ document.addEventListener('DOMContentLoaded', () => {
         grid.appendChild(obj)
 
         let mueve = setInterval(function () {
-            if (posicio > 0 && posicio < 70 && position < 0) {
+            if (posicio > 0 && posicio < 70 && position < 60) {
                 clearInterval(mueve);
-                //sumar score
-                while (grid.firstChild) {
-                    grid.removeChild(grid.lastChild)
-                }
+              score++
+              obj.remove();
+              pintarPunts();
+               
             }
 
             posicio -= 15;
@@ -116,11 +118,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 20)
         setTimeout(generaObs, randomTime);
 
+    }
 
+    function pintarPunts(){
+        document.getElementById("score").innerHTML= 'Score:'+score;
+       
     }
 
     generaObs()
     obstaculo();
+    
 
     document.addEventListener('keydown', control)
 })

@@ -42,3 +42,8 @@
     bottom: 300px;
 
 }
+
+#alert{
+    position: absolute;
+    top:0
+}
