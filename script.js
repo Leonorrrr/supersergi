@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let isGameOver = false;
 
     let score = 0;
+    let vidas = 3;
     
     function control(tecla) {
 
