@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sergi = document.querySelector('.sergi')
     const grid = document.querySelector('.grid')
     const alert = document.getElementById('alert')
+    const cancion = new Audio("./musica/doraemon.mp3")
 
     let gravity = 0.9
     let estaBotant = false;
@@ -41,12 +42,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     count--;
                     position = position * gravity;
                     sergi.style.bottom = position + 'px';
+                    console.log(position)  
                 }, 20)
             }
             position += 50
             position = position * gravity
             count++
             sergi.style.bottom = position + 'px'
+            console.log(position)
         }, 20)
     }
 
@@ -74,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
             grid.appendChild(obj)
 
             let mueve = setInterval(function () {
-                if (posicio > 0 && posicio < 60 && position < 60) {
+                if (posicio > 0 && posicio < 60 && position < 150) {
                     clearInterval(mueve);
                     isGameOver = true;
 
@@ -82,6 +85,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         grid.removeChild(grid.lastChild)
 
                     }
+                    
+                    location.reload();
                 }
                 posicio -= 15;
                 obj.style.left = posicio + 'px';
@@ -105,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
         grid.appendChild(obj)
 
         let mueve = setInterval(function () {
-            if (posicio > 0 && posicio < 70 && position < 60) {
+            if (posicio > 0 && posicio < 70 && position < 366 && position > 300) {
                 clearInterval(mueve);
               score++
               obj.remove();
@@ -122,11 +127,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function pintarPunts(){
         document.getElementById("score").innerHTML= 'Score:'+score;
-       
+       0
     }
 
+    setTimeout(function(){
+        cancion.play();
+    },2000)
+
     generaObs()
-    obstaculo();
+    setTimeout(obstaculo,1500)
+    
     
 
     document.addEventListener('keydown', control)
